@@ -25,8 +25,8 @@ done:
     syscall
 
 print_num:
-    /* expects number to be in rdi */
-    # r8, rdi, rbx, rdx, rsi
+    /* expects number to be in rdi to be compatible with c calling convention */
+    # uses r8, rdi, rbx, rdx, rsi
     push    %r8
     push    %rdi
     push    %rbx
