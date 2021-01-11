@@ -50,7 +50,6 @@ begin:
     cmp     $0, %rax  # if rax is zero, we're done
     je      after
 
-skip:
     jmp     begin
 
 after:
@@ -62,15 +61,6 @@ after:
     mov     %rsp, %rsi
     mov     %r8, %rdx
     syscall
-
-    /* print newline */
-    /* push    $0xA */
-    /* mov     $1, %rax */
-    /* mov     $1, %rdi */
-    /* mov     %rsp, %rsi */
-    /* mov     $1, %rdx */
-    /* syscall */
-    /* pop     %rdx # register doesn't matter here */
 
     add     %r8, %rsp # restore stack pointer
 
