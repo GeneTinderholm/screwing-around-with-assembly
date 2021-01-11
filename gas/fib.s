@@ -36,6 +36,8 @@ print_num:
     mov     %rsp, %r8    # store off the original value of the stack pointer
     mov     %rdi, %rax
     mov     $10, %rbx
+    sub     $1, %rsp
+    movb    $0xA, (%rsp) # newline
 
     /* main loop, converts one digit into a character and pushes it on the stack */
 begin:
@@ -62,13 +64,13 @@ after:
     syscall
 
     /* print newline */
-    push    $0xA
-    mov     $1, %rax
-    mov     $1, %rdi
-    mov     %rsp, %rsi
-    mov     $1, %rdx
-    syscall
-    pop     %rdx # register doesn't matter here
+    /* push    $0xA */
+    /* mov     $1, %rax */
+    /* mov     $1, %rdi */
+    /* mov     %rsp, %rsi */
+    /* mov     $1, %rdx */
+    /* syscall */
+    /* pop     %rdx # register doesn't matter here */
 
     add     %r8, %rsp # restore stack pointer
 
