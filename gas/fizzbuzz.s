@@ -41,9 +41,7 @@ nobuzz:
     cmp $0, %rsi
     jne nonum
     mov %rcx, %rdi
-    push %rcx
     call print_num
-    pop  %rcx
 
 nonum:
     cmp $100, %rcx
@@ -59,22 +57,6 @@ done:
     syscall
 
 writefizz:
-    /* push %rax */
-    /* push %rdi */
-    /* push %rsi */
-    /* push %rdx */
-    /* push %rcx */
-    /* mov $1, %rax */
-    /* mov $1, %rdi */
-    /* mov $fizz, %rsi */
-    /* mov $4, %rdx */
-    /* syscall */
-    /* pop  %rcx */
-    /* pop  %rdx */
-    /* pop  %rsi */
-    /* pop  %rdi */
-    /* pop  %rax */
-    /* ret */
     push %rsi
     push %rdx
     mov $fizz, %rsi
@@ -118,3 +100,4 @@ write:
     pop  %rdi
     pop  %rax
     ret
+

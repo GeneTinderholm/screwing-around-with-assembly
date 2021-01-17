@@ -9,6 +9,7 @@ print_num:
     push    %rbx
     push    %rdx
     push    %rsi
+    push    %rcx
 
     mov     %rsp, %r8    # store off the original value of the stack pointer
     mov     %rdi, %rax
@@ -41,6 +42,7 @@ after:
 
     add     %r8, %rsp # restore stack pointer
 
+    pop     %rcx
     pop     %rsi
     pop     %rdx
     pop     %rbx
