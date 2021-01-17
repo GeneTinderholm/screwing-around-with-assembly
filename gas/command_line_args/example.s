@@ -12,12 +12,11 @@
     Build with:
 
     as -o example.o -gstabs example.s
-    gas/command_line_args [ ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc example.o
+    ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc example.o
  */
 
 _start:
-    mov     (%rsp), %rax    # argc
-    pop     %rdi            # pop off argc
+    pop     %rax            # argc
 
 print_arg:
     pop     %rdi            # argv[i]
