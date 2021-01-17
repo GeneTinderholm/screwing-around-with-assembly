@@ -95,24 +95,35 @@ writebuzz:
     ret
 
 write_nl:
-    push %rax
-    push %rdi
-    push %rsi
+    /* push %rax */
+    /* push %rdi */
+    /* push %rsi */
+    /* push %rdx */
+    /* push %rcx */
+    /* sub $1, %rsp */
+    /* movb $'\n', (%rsp) */
+    /* mov $1, %rax */
+    /* mov $1, %rdi */
+    /* mov %rsp, %rsi */
+    /* mov $1, %rdx */
+    /* syscall */
+    /* add $1, %rsp */
+    /* pop  %rcx */
+    /* pop  %rdx */
+    /* pop  %rsi */
+    /* pop  %rdi */
+    /* pop  %rax */
+    /* ret */
     push %rdx
-    push %rcx
+    push %rsi
     sub $1, %rsp
     movb $'\n', (%rsp)
-    mov $1, %rax
-    mov $1, %rdi
     mov %rsp, %rsi
     mov $1, %rdx
-    syscall
+    call write
     add $1, %rsp
-    pop  %rcx
-    pop  %rdx
-    pop  %rsi
-    pop  %rdi
-    pop  %rax
+    pop %rsi
+    pop %rdx
     ret
 
 write:
@@ -122,7 +133,6 @@ write:
     mov $1, %rax
     mov $1, %rdi
     syscall
-    add $1, %rsp
     pop  %rcx
     pop  %rdi
     pop  %rax
