@@ -1,12 +1,27 @@
 .section .text
 .globl _start
 
+# argc is on the stack
+# argv follows argc on the stack
+
+/*
+    Further explanation:
+    The stack pointer at program initiation is a pointer to argc (the number of command line arguments passed).
+    After argc, is an array of character pointers (c strings) the length of which is determined by argc
+
+    Build with:
+
+    as -o example.o -gstabs example.s
+    gas/command_line_args [ ld -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc example.o
+ */
+
 _start:
     mov     (%rsp), %rax    # argc
-    add     $8, %rsp
+    pop     %rdi            # pop off argc
 
 print_arg:
-    mov     (%rsp), %rdi  # argv[i]
+    pop     %rdi            # argv[i]
+
     push    %rax
     push    %rdi
 
@@ -15,7 +30,6 @@ print_arg:
     pop     %rdi
     pop     %rax
 
-    add     $8, %rsp    # move next pointer to top of stack
     dec     %rax
     jnz     print_arg
 
