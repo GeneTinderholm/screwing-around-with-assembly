@@ -59,24 +59,6 @@ done:
     syscall
 
 writefizz:
-    push %rax
-    push %rdi
-    push %rsi
-    push %rdx
-    push %rcx
-    mov $1, %rax
-    mov $1, %rdi
-    mov $fizz, %rsi
-    mov $4, %rdx
-    syscall
-    pop  %rcx
-    pop  %rdx
-    pop  %rsi
-    pop  %rdi
-    pop  %rax
-    ret
-
-writebuzz:
     /* push %rax */
     /* push %rdi */
     /* push %rsi */
@@ -84,7 +66,7 @@ writebuzz:
     /* push %rcx */
     /* mov $1, %rax */
     /* mov $1, %rdi */
-    /* mov $buzz, %rsi */
+    /* mov $fizz, %rsi */
     /* mov $4, %rdx */
     /* syscall */
     /* pop  %rcx */
@@ -93,6 +75,16 @@ writebuzz:
     /* pop  %rdi */
     /* pop  %rax */
     /* ret */
+    push %rsi
+    push %rdx
+    mov $fizz, %rsi
+    mov $4, %rdx
+    call write
+    pop %rdx
+    pop %rsi
+    ret
+
+writebuzz:
     push %rsi
     push %rdx
     mov $buzz, %rsi
