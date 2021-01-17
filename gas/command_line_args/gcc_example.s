@@ -2,6 +2,10 @@
     programs built with gcc handle command line arguments a little differently
     argc will be in %rdi at program execution
     argv (a pointer to the first string) will be in %rsi
+
+    Build with:
+
+    gcc -no-pie gcc_example.s
  */
 
 .section .text
