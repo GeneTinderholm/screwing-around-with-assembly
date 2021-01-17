@@ -77,43 +77,32 @@ writefizz:
     ret
 
 writebuzz:
-    push %rax
-    push %rdi
-    push %rsi
-    push %rdx
-    push %rcx
-    mov $1, %rax
-    mov $1, %rdi
-    mov $buzz, %rsi
-    mov $4, %rdx
-    syscall
-    pop  %rcx
-    pop  %rdx
-    pop  %rsi
-    pop  %rdi
-    pop  %rax
-    ret
-
-write_nl:
     /* push %rax */
     /* push %rdi */
     /* push %rsi */
     /* push %rdx */
     /* push %rcx */
-    /* sub $1, %rsp */
-    /* movb $'\n', (%rsp) */
     /* mov $1, %rax */
     /* mov $1, %rdi */
-    /* mov %rsp, %rsi */
-    /* mov $1, %rdx */
+    /* mov $buzz, %rsi */
+    /* mov $4, %rdx */
     /* syscall */
-    /* add $1, %rsp */
     /* pop  %rcx */
     /* pop  %rdx */
     /* pop  %rsi */
     /* pop  %rdi */
     /* pop  %rax */
     /* ret */
+    push %rsi
+    push %rdx
+    mov $buzz, %rsi
+    mov $4, %rdx
+    call write
+    pop %rdx
+    pop %rsi
+    ret
+
+write_nl:
     push %rdx
     push %rsi
     sub $1, %rsp
